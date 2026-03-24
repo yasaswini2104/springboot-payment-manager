@@ -62,10 +62,10 @@ Payment Done!
 ### Console Output:
 
 ```
----- Default Payment (Primary - UPI) ----
+Default Payment (Primary - UPI) 
 Paid 5000.0 using UPI
 
----- Net Banking Payment ----
+Net Banking Payment 
 Paid 5000.0 using Net Banking
 ```
 
