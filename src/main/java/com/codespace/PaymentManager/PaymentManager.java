@@ -23,10 +23,10 @@ public class PaymentManager {
     private double amount;
 
     public void makePayment() {
-        System.out.println("---- Default Payment (Primary - UPI) ----");
+        System.out.println("Default Payment (Primary - UPI)");
         paymentService.pay(amount);
 
-        System.out.println("---- Net Banking Payment ----");
+        System.out.println("Net Banking Payment");
         netBankingService.pay(amount);
     }
 }
