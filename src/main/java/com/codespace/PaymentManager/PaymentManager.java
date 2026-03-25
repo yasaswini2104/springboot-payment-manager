@@ -5,13 +5,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import com.codespace.PaymentManager.service.CardsService;
 
 @Component
 public class PaymentManager {
 
-    //Injecting PRIMARY bean (UPI)
     @Autowired
     private PaymentService paymentService;
+    @Autowired
+    private CardsService cardsService;
 
     //Injecting specific bean using QUALIFIER
     @Autowired
@@ -28,5 +30,8 @@ public class PaymentManager {
 
         System.out.println("Net Banking Payment");
         netBankingService.pay(amount);
+
+        System.out.println("Card Payment");
+        cardsService.pay(amount);
     }
 }

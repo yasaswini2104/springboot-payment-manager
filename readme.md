@@ -1,6 +1,6 @@
 # 💳 Payment Manager Application (Spring Boot)
 
-A simple Spring Boot application demonstrating **Dependency Injection concepts** such as `@Primary`, `@Qualifier`, `@Autowired`, `@Service`, and `@Value`.
+A Spring Boot application demonstrating Dependency Injection and Bean Lifecycle concepts using multiple payment methods.
 
 ---
 
@@ -10,29 +10,18 @@ A simple Spring Boot application demonstrating **Dependency Injection concepts**
 
   * UPI (default using `@Primary`)
   * Net Banking (using `@Qualifier`)
-  * Cards
+  * Cards (lazy initialized using `@Lazy`)
 * Centralized payment handling via `PaymentManager`
 * REST API endpoint to trigger payments
 * External configuration using `application.properties`
-
----
-
-## Concepts Covered
-
-* Dependency Injection (DI)
-* Bean Management
-* `@Primary` vs `@Qualifier`
-* `@Autowired`
-* `@Service` annotation
-* `@Value` for configuration
-* Spring Boot REST API (`@RestController`)
+* Bean lifecycle tracking using `@PostConstruct` and `@PreDestroy`
 
 ---
 
 ## Configuration
 
 **application.properties**
-
+add this:
 ```
 payment.amount=5000
 ```
@@ -60,15 +49,13 @@ Payment Done!
 ```
 
 ### Console Output:
+![Application Output](images/output.png)
 
-```
-Default Payment (Primary - UPI) 
-Paid 5000.0 using UPI
-
-Net Banking Payment 
-Paid 5000.0 using Net Banking
-```
-
+---
+### Bean Lifecycle Behavior
+* UPIService initializes at application startup (@PostConstruct)
+* CardsService is lazily initialized only when invoked (@Lazy)
+* UPIService cleanup runs on application shutdown (@PreDestroy)
 ---
 
 ## Tech Stack
